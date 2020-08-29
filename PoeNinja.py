@@ -13,10 +13,7 @@ def Get_PoeNinja_Prices():
         r = requests.get(link) 
         priceList = json.loads(r.text) 
         for item in priceList['lines']: 
-            itemProps = [] 
-            itemProps.append(item['name'])
-            itemProps.append(item['links'])
-            itemProps.append(item['chaosValue'])
+            itemProps = dict(name=item['name'],links=item['links'],valaue=item['chaosValue'])
             PoeNinjaPrice.append(itemProps)
     return PoeNinjaPrice 
 
