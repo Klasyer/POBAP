@@ -1,10 +1,15 @@
 from PoeNinja import Get_PoeNinja_Prices
 import time 
+from flask import Flask
+import json 
 
-start = time.perf_counter() 
-print(0)
-print(Get_PoeNinja_Prices())
-print(time.perf_counter()-start)
-print(Get_PoeNinja_Prices())
-print(time.perf_counter()-start)
+app = Flask(__name__) 
 
+@app.route('/')
+def index(): 
+    return json.loads('This Worked')
+
+if __name__ == "__main__": 
+    app.run(debug=True)
+
+    
