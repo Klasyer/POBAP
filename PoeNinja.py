@@ -2,11 +2,11 @@ import requests
 import json 
 import time 
 import os 
-from cache import cache
+from cache import PoeNinjaCache
 from cachetools import cached
 import pickle 
 
-@cached(cache)
+@cached(PoeNinjaCache)
 def Get_PoeNinja_Prices(): 
     toUpdate = False 
     timeNow = time.time() 

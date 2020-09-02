@@ -1,5 +1,5 @@
 import pobapi 
-from fixedBuild import * 
+from neededLists import * 
 
 class fixedBuild: 
     def __init__(self, url): 
@@ -12,3 +12,9 @@ class fixedBuild:
         for item in item_list: 
             self.FixedItems.append(item.splitlines())
 
+    def fix_sockets(self):
+        return 'fuck'
+
+b1 = fixedBuild("https://pastebin.com/UfSV0JNU")
+
+print(b1.fix_sockets()) 
