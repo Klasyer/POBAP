@@ -1,8 +1,7 @@
 known_mods = [
-    {'mod':'Rarity', 'fix':'Rarity'},
     {'mod':'ItemLvl', 'fix':'Item Level'},
     {'mod':'Name:', 'fix':''},
-    {'mod':'Base:', 'fix':''},
+    {'mod':'Base:', 'fix':''}
 ] 
 
 mods_to_del = [
