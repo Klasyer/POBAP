@@ -61,6 +61,12 @@ class fixedItem:
         self.newItem = list(filter(('Delete').__ne__,self.newItem))
         return True
 
+    def fix_item(self): 
+        fixedItem.fix_sockets(self)
+        fixedItem.add_seperetors(self)
+        fixedItem.fix_mods(self) 
+        return True 
+
     
 
     
@@ -72,6 +78,7 @@ item = ['Rarity: Rare', 'Name: Eagle Paw', 'Base: Fingerless Silk Gloves', 'Craf
 
 fi = fixedItem(item) 
 
+'''
 print(fi.newItem)
 
 print(fi.fix_sockets()) 
@@ -83,5 +90,9 @@ print(fi.add_seperetors())
 print(fi.newItem)
 
 print(fi.fix_mods()) 
+
+print(fi.newItem)'''
+
+fi.fix_item() 
 
 print(fi.newItem)

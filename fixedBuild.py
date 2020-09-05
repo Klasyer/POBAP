@@ -1,5 +1,6 @@
 import pobapi 
 from neededLists import * 
+from fixedItem import fixedItem 
 
 class fixedBuild: 
     def __init__(self, url): 
@@ -8,13 +9,27 @@ class fixedBuild:
         for i in range(len(self.originalBuild.items)): 
             item_list.append(str(self.originalBuild.items[i]))
 
-        self.FixedItems = []
+        self.buildItems = []
         for item in item_list: 
-            self.FixedItems.append(item.splitlines())
+            self.buildItems.append(item.splitlines())
 
-    def fix_sockets(self):
-        return 'fuck'
+    def fix_items(self):
+        for i,item in enumerate(self.buildItems):
+            Fixitem = fixedItem(item) 
+            Fixitem.fix_item()
+            self.buildItems[i] = Fixitem.newItem
+
+        return True
+            
 
 b1 = fixedBuild("https://pastebin.com/UfSV0JNU")
 
-print(b1.fix_sockets()) 
+for item in b1.buildItems: 
+    print(item)
+    print('###########')
+
+b1.fix_non_uniques()
+
+for item in b1.buildItems: 
+    print(item)
+    print('###########')

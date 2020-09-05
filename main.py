@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__) 
 
-@app.route('/<itemSearch>',methods=['GET'])
+@app.route('/Unique/<itemSearch>',methods=['GET'])
 def index(itemSearch):
     price = "???"
     for item in Get_PoeNinja_Prices(): 
@@ -14,6 +14,7 @@ def index(itemSearch):
     text =  "%s costs %s" %  (itemSearch,price)
     text = json.loads(json.dumps(text))
     return text 
+
 
 
 if __name__ == "__main__": 

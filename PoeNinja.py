@@ -2,7 +2,7 @@ import requests
 import json 
 import time 
 import os 
-from cache import PoeNinjaCache
+from cache import PoeNinjaCache, PriceCache
 from cachetools import cached
 import pickle 
 
@@ -33,9 +33,11 @@ def Get_PoeNinja_Prices():
             pickle.dump(PoeNinjaPrice, fp)
     return PoeNinjaPrice 
 
+@cached(PriceCache)
 def Get_PoeNinja_Item_Price(item2Price): 
     price = "???"
     for item in Get_PoeNinja_Prices(): 
         if item['name'] == itemSearch: 
             price = item['value']
     return price
+
