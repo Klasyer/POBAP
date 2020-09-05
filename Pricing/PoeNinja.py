@@ -4,17 +4,17 @@ import time
 import os 
 from cache import PoeNinjaCache, PriceCache
 from cachetools import cached
-from neededLists import poeNinja_links 
+from needed.neededLists import poeNinja_links 
 import pickle 
 
 @cached(PoeNinjaCache)
 def Get_PoeNinja_Prices(): 
     toUpdate = False 
     timeNow = time.time() 
-    if os.stat("PoeNinjaPrices.txt").st_size == 0: 
+    if os.stat("Pricing\PoeNinjaPrices.txt").st_size == 0: 
         toUpdate = True
     else: 
-        with open ('PoeNinjaPrices.txt', 'rb') as fp:
+        with open ('Pricing\PoeNinjaPrices.txt', 'rb') as fp:
             PoeNinjaPrice = pickle.load(fp)
         if timeNow - PoeNinjaPrice[0]['value'] > 43200: 
             toUpdate = True 
@@ -29,15 +29,16 @@ def Get_PoeNinja_Prices():
             for item in priceList['lines']: 
                 itemProps = dict(name=item['name'],links=item['links'],value=item['chaosValue'])
                 PoeNinjaPrice.append(itemProps)
-        with open('PoeNinjaPrices.txt', 'wb') as fp:
+        with open('Pricing\PoeNinjaPrices.txt', 'wb') as fp:
             pickle.dump(PoeNinjaPrice, fp)
     return PoeNinjaPrice 
 
 @cached(PriceCache)
 def Get_PoeNinja_Item_Price(item2Price): 
-    price = "???"
+    price = '???'
     for item in Get_PoeNinja_Prices(): 
-        if item['name'] == itemSearch: 
+        if item['name'] == item2Price: 
             price = item['value']
-    return price
+    rtn = {'name':item2Price, 'value':price, 'currency':'chaos'}
+    return rtn
 

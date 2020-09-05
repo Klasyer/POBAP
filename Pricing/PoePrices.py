@@ -4,25 +4,24 @@ import requests
 import json
 import pobapi
 
-
-def Get_PoePrices_price(item2Price):
+def Get_PoePrices_price(item2Price,itemName):
     item = {"i":base64.b64encode(item2Price.encode('ascii')) 
     ,"l":"Harvest"
     ,"s":"POBAP"
     }
     poePriceResponse = json.loads((requests.post("https://www.poeprices.info/api?",params=item)).text)
-    min_price = poePriceResponse['min']
     max_price = poePriceResponse['max']
-    currency = poePriceResponse['currency']
-    return {'min':min_price, 'max':max_price, 'currency':currency}
+    currency = round(poePriceResponse['currency'],2)
+    return {'name':itemName,'value':max_price, 'currency':currency}
 
 url = "https://pastebin.com/UfSV0JNU" 
 #url = "https://pastebin.com/1KTm4QpP"
 build = pobapi.from_url(url) 
 
 x = str(build.items[6])
+y = build.items[6].name
 
-print(Get_PoePrices_price(x))
+print(Get_PoePrices_price(x,y))
 
 item = '''Rarity: Rare
 Oblivion Veil
@@ -56,4 +55,4 @@ Spells have +1.48% to Critical Strike Chance
 Crusader Item
 Hunter Item'''
 
-print(Get_PoePrices_price(item))
+print(Get_PoePrices_price(item,'Oblivion Veil'))

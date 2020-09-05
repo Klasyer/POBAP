@@ -1,5 +1,5 @@
-from neededLists import * 
-from helpFunctions import * 
+from needed.neededLists import * 
+from needed.helpFunctions import * 
 import pobapi
 
 class fixedItem: 

@@ -1,10 +1,13 @@
 import pobapi 
-from neededLists import * 
-from fixedItem import fixedItem 
+from needed.neededLists import * 
+from buildNitems.fixedItem import fixedItem
 
 class fixedBuild: 
-    def __init__(self, url): 
-        self.originalBuild = pobapi.from_url(url)
+    def __init__(self, build): 
+        if 'pastebin.com' in str(build): 
+            self.originalBuild = pobapi.from_url(build)
+        else:
+            self.originalBuild = pobapi.PathOfBuildingAPI(build)
         item_list = []
         for i in range(len(self.originalBuild.items)): 
             item_list.append(str(self.originalBuild.items[i]))
@@ -28,7 +31,7 @@ for item in b1.buildItems:
     print(item)
     print('###########')
 
-b1.fix_non_uniques()
+b1.fix_items()
 
 for item in b1.buildItems: 
     print(item)

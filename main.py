@@ -1,17 +1,13 @@
-from PoeNinja import Get_PoeNinja_Prices
 import time 
 from flask import Flask
+from Pricing.PoeNinja import Get_PoeNinja_Item_Price
 import json 
 
 app = Flask(__name__) 
 
 @app.route('/Unique/<itemSearch>',methods=['GET'])
 def index(itemSearch):
-    price = "???"
-    for item in Get_PoeNinja_Prices(): 
-        if item['name'] == itemSearch: 
-            price = item['value']
-    text =  "%s costs %s" %  (itemSearch,price)
+    text = Get_PoeNinja_Item_Price(itemSearch)
     text = json.loads(json.dumps(text))
     return text 
 
