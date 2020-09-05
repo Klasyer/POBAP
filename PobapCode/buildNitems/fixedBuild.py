@@ -1,6 +1,5 @@
 import pobapi 
-from needed.neededLists import * 
-from buildNitems.fixedItem import fixedItem
+from PobapCode.buildNitems.fixedItem import fixedItem
 
 class fixedBuild: 
     def __init__(self, build): 

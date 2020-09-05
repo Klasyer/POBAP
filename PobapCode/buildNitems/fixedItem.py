@@ -1,5 +1,5 @@
-from needed.neededLists import * 
-from needed.helpFunctions import * 
+from PobapCode.needed.neededLists import special_seperator, seperetor_mods, mods_to_del, known_mods
+from PobapCode.needed.helpFunctions import list_in_string, string_in_list, string_first_num, list_in_string_dict
 import pobapi
 
 class fixedItem: 

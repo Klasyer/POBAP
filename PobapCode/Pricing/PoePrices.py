@@ -10,8 +10,8 @@ def Get_PoePrices_price(item2Price,itemName):
     ,"s":"POBAP"
     }
     poePriceResponse = json.loads((requests.post("https://www.poeprices.info/api?",params=item)).text)
-    max_price = poePriceResponse['max']
-    currency = round(poePriceResponse['currency'],2)
+    max_price = round(poePriceResponse['max'],2)
+    currency = poePriceResponse['currency']
     return {'name':itemName,'value':max_price, 'currency':currency}
 
 url = "https://pastebin.com/UfSV0JNU" 

@@ -28,3 +28,7 @@ poeNinja_links = [
     'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueArmour&language=en',
     'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueAccessory&language=en'
 ]
+
+poeNinja_Currency = [
+    'https://poe.ninja/api/data/currencyoverview?league=Harvest&type=Currency&language=en'
+]

@@ -1,6 +1,6 @@
 import time 
 from flask import Flask
-from Pricing.PoeNinja import Get_PoeNinja_Item_Price
+from PobapCode.Pricing.PoeNinja import Get_PoeNinja_Item_Price
 import json 
 
 app = Flask(__name__) 
