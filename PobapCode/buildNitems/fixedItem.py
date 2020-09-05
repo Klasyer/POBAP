@@ -66,19 +66,33 @@ class fixedItem:
         fixedItem.add_seperetors(self)
         fixedItem.fix_mods(self) 
         return True 
-
     
+    def item_links(self): 
+        sockets_location = string_in_list('Sockets',self.newItem) 
+        maxSockets = 0                 
+        if sockets_location != -1: 
+            currentSockets = 1
+            for letter in self.newItem[sockets_location].replace('Sockets: ', ''): 
+                if letter == '-':
+                    currentSockets = currentSockets+1
+                if letter == ' ': 
+                    maxSockets = max(maxSockets,currentSockets)
+                    currentSockets = 1
+            maxSockets = max(maxSockets,currentSockets)            
+            if maxSockets < 5: 
+                maxSockets = 0
+        return maxSockets 
 
-    
-#item = ['Rarity: Rare', 'Name: Eagle Paw', 'Base: Fingerless Silk Gloves', 'Crafted Item', 'Quality: 20', "Sockets: (('R', 'G', 'B', 'B'),)", 'LevelReq: 70', 'ItemLvl: 74', 'Implicits: 2', 'Trigger Word of Light when you take a Critical Strike', '16% increased Spell Damage', '+30 to Dexterity', '+40 to maximum Energy Shield', '35% increased Energy Shield', '+22 to maximum Life', '+42% to Lightning Resistance', '12% increased Attack Speed']
+'''
+item = ['Rarity: Rare', 'Name: Eagle Paw', 'Base: Fingerless Silk Gloves', 'Crafted Item', 'Quality: 20', "Sockets: (('R', 'G', 'B', 'B', 'W'),)", 'LevelReq: 70', 'ItemLvl: 74', 'Implicits: 2', 'Trigger Word of Light when you take a Critical Strike', '16% increased Spell Damage', '+30 to Dexterity', '+40 to maximum Energy Shield', '35% increased Energy Shield', '+22 to maximum Life', '+42% to Lightning Resistance', '12% increased Attack Speed']
 
-item = ['Rarity: Rare', 'Name: Eagle Paw', 'Base: Fingerless Silk Gloves', 'Crafted Item', 'Quality: 20', "Sockets: (('B', 'R'), ('B', 'G'), ('B', 'W'))", 'LevelReq: 70', 'ItemLvl: 74', 'Implicits: 2', 'Trigger Word of Light when you take a Critical Strike', '16% increased Spell Damage', '+30 to Dexterity', '+40 to maximum Energy Shield', '35% increased Energy Shield', '+22 to maximum Life', '+42% to Lightning Resistance', '12% increased Attack Speed']
+#item = ['Rarity: Rare', 'Name: Eagle Paw', 'Base: Fingerless Silk Gloves', 'Crafted Item', 'Quality: 20', "Sockets: (('B', 'R'), ('B', 'G'), ('B', 'W'))", 'LevelReq: 70', 'ItemLvl: 74', 'Implicits: 2', 'Trigger Word of Light when you take a Critical Strike', '16% increased Spell Damage', '+30 to Dexterity', '+40 to maximum Energy Shield', '35% increased Energy Shield', '+22 to maximum Life', '+42% to Lightning Resistance', '12% increased Attack Speed']
 
 #item = ['Rarity: Rare', 'Name: Eagle Paw', 'Base: Fingerless Silk Gloves', 'Crafted Item', 'Quality: 20',  'LevelReq: 70', 'ItemLvl: 74', 'Implicits: 2', 'Trigger Word of Light when you take a Critical Strike', '16% increased Spell Damage', '+30 to Dexterity', '+40 to maximum Energy Shield', '35% increased Energy Shield', '+22 to maximum Life', '+42% to Lightning Resistance', '12% increased Attack Speed']
 
 fi = fixedItem(item) 
 
-'''
+
 print(fi.newItem)
 
 print(fi.fix_sockets()) 
@@ -91,8 +105,12 @@ print(fi.newItem)
 
 print(fi.fix_mods()) 
 
-print(fi.newItem)'''
+print(fi.newItem)
 
 fi.fix_item() 
 
 print(fi.newItem)
+
+print(fi.item_links())
+'''
+

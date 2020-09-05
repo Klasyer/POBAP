@@ -23,7 +23,7 @@ class fixedBuild:
 
         return True
             
-
+'''
 b1 = fixedBuild("https://pastebin.com/UfSV0JNU")
 
 for item in b1.buildItems: 
@@ -35,3 +35,4 @@ b1.fix_items()
 for item in b1.buildItems: 
     print(item)
     print('###########')
+'''

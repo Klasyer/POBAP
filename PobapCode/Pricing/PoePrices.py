@@ -3,17 +3,25 @@ import re
 import requests
 import json
 import pobapi
+from PobapCode.Pricing.cache import PoePriceCache
+from cachetools import cached
 
+@cached(PoePriceCache)
 def Get_PoePrices_price(item2Price,itemName):
     item = {"i":base64.b64encode(item2Price.encode('ascii')) 
     ,"l":"Harvest"
     ,"s":"POBAP"
     }
     poePriceResponse = json.loads((requests.post("https://www.poeprices.info/api?",params=item)).text)
-    max_price = round(poePriceResponse['max'],2)
-    currency = poePriceResponse['currency']
+    try: 
+        max_price = round(poePriceResponse['max'],2)
+        currency = poePriceResponse['currency']
+    except: 
+        max_price = 0 
+        currency = 'chaos'
     return {'name':itemName,'value':max_price, 'currency':currency}
 
+'''
 url = "https://pastebin.com/UfSV0JNU" 
 #url = "https://pastebin.com/1KTm4QpP"
 build = pobapi.from_url(url) 
@@ -21,9 +29,11 @@ build = pobapi.from_url(url)
 x = str(build.items[6])
 y = build.items[6].name
 
+print(x)
+
 print(Get_PoePrices_price(x,y))
 
-item = '''Rarity: Rare
+item = Rarity: Rare
 Oblivion Veil
 Astral Plate
 --------
@@ -53,6 +63,7 @@ Spells have +1.48% to Critical Strike Chance
 +15% to Fire and Chaos Resistances (crafted)
 --------
 Crusader Item
-Hunter Item'''
+Hunter Item
 
 print(Get_PoePrices_price(item,'Oblivion Veil'))
+'''
