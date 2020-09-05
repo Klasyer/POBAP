@@ -6,7 +6,7 @@ class fixedBuild:
         if 'pastebin.com' in str(build): 
             self.originalBuild = pobapi.from_url(build)
         else:
-            self.originalBuild = pobapi.PathOfBuildingAPI(build)
+            self.originalBuild = pobapi.from_import_code(build)
         item_list = []
         for i in range(len(self.originalBuild.items)): 
             item_list.append(str(self.originalBuild.items[i]))

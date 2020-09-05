@@ -7,8 +7,7 @@ from cachetools import cached
 
 @cached(BuildCache)
 def Get_Build_Price(fixedBuild): 
-    pricedBuild = [] 
-    finalPricing = []
+    pricedBuild = []
     totPrice = 0 
     uniqueCount = 0
     for i,item in enumerate(fixedBuild.buildItems): 
@@ -18,11 +17,11 @@ def Get_Build_Price(fixedBuild):
             uniqueCount = uniqueCount + 1 
         else:
             price = Get_PoePrices_price(('\n'.join(map(str,item))),fixedBuild.originalBuild.items[i].name)
+            print(('\n'.join(map(str,item))))
         totPrice = totPrice + price['value']
         pricedBuild.append(price)
     total = {'Total Cost':totPrice, 'Unique Items':uniqueCount} 
-    finalPricing.append(total)
-    finalPricing.append(pricedBuild)
+    finalPricing = {'Overview':total, 'Detialed':pricedBuild}
     return finalPricing 
 
 '''

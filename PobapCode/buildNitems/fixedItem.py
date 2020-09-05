@@ -64,7 +64,7 @@ class fixedItem:
     def fix_item(self): 
         fixedItem.fix_sockets(self)
         fixedItem.add_seperetors(self)
-        fixedItem.fix_mods(self) 
+        fixedItem.fix_mods(self)
         return True 
     
     def item_links(self): 
