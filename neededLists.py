@@ -19,3 +19,12 @@ seperetor_mods = [
 special_seperator = [
     'Implicits'
 ]
+
+poeNinja_links = [
+    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=SkillGem&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueJewel&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueFlask&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueWeapon&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueArmour&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueAccessory&language=en'
+]

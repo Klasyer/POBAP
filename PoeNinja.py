@@ -4,6 +4,7 @@ import time
 import os 
 from cache import PoeNinjaCache, PriceCache
 from cachetools import cached
+from neededLists import poeNinja_links 
 import pickle 
 
 @cached(PoeNinjaCache)
@@ -21,8 +22,7 @@ def Get_PoeNinja_Prices():
     if toUpdate: 
         fileTime = dict(name='ListTime',links='0',value=time.time())
         PoeNinjaPrice = [fileTime]
-        links = open('PoeNinjaLinks.txt', 'r') 
-        linksList = links.read().splitlines()
+        linksList = poeNinja_links 
         for link in linksList: 
             r = requests.get(link) 
             priceList = json.loads(r.text) 
