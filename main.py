@@ -4,7 +4,7 @@ import json
 from PobapCode.buildNitems.fixedBuild import fixedBuild
 from PobapCode.Pricing.Price import Get_Build_Price
 
-app = Flask(__name__) 
+application = app = Flask(__name__) 
 
 @app.route('/Unique/<itemSearch>',methods=['GET'])
 def index(itemSearch):
