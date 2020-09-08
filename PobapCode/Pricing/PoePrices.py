@@ -22,21 +22,6 @@ def Get_PoePrices_price(item2Price,itemName):
     return {'name':itemName,'value':max_price, 'currency':currency}
 
 '''
-@cached(PoePriceCache)
-def Get_PoePrices_price(item2Price,itemName):
-    item = {"i":base64.b64encode(item2Price.encode('ascii')) 
-    ,"l":"Harvest"
-    ,"s":"POBAP"
-    }
-    poePriceResponse = json.loads((requests.post("https://www.poeprices.info/api?",params=item)).text)
-    try: 
-        max_price = round(poePriceResponse['max'],2)
-        currency = poePriceResponse['currency'].replace('exalt','exalted')
-    except: 
-        max_price = 0 
-        currency = 'chaos'
-    return {'name':itemName,'value':max_price, 'currency':currency}
-
 url = "https://pastebin.com/UfSV0JNU" 
 #url = "https://pastebin.com/1KTm4QpP"
 build = pobapi.from_url(url) 
