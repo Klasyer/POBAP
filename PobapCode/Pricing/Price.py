@@ -1,7 +1,7 @@
 from PobapCode.buildNitems.fixedBuild import fixedBuild
 from PobapCode.buildNitems.fixedItem import fixedItem
-from PobapCode.Pricing.PoePrices import Get_PoePrices_price 
-from PobapCode.Pricing.PoeNinja import Get_PoeNinja_Item_Price
+from PobapCode.Pricing.PoePrices import Get_PoePrices_price
+from PobapCode.Pricing.PoeNinja import Get_PoeNinja_Item_Price, Get_Chaos, Get_From_Chaos
 from PobapCode.Pricing.cache import BuildCache
 from cachetools import cached
 
@@ -17,13 +17,17 @@ def Get_Build_Price(fixedBuild):
             uniqueCount = uniqueCount + 1 
         else:
             price = Get_PoePrices_price(('\n'.join(map(str,item))),fixedBuild.originalBuild.items[i].name)
-            print(('\n'.join(map(str,item))))
-        totPrice = totPrice + price['value']
+        if price['currency'] != 'chaos':
+            totPrice = totPrice + Get_Chaos(price['value'],price['currency'])
+        else: 
+            totPrice = totPrice + price['value']
         pricedBuild.append(price)
-    total = {'Total Cost':totPrice, 'Unique Items':uniqueCount} 
+    totPrice = round(totPrice,2)
+    totExalted = round(Get_From_Chaos(totPrice,'exalted'),2)
+    total = {'Chaos Total Cost':totPrice,'Currency':'chaos','Exalted Total Cost':totExalted, 'Unique Items':uniqueCount} 
     finalPricing = {'Overview':total, 'Detialed':pricedBuild}
     return finalPricing 
-
+0
 '''
 b1 = fixedBuild("https://pastebin.com/UfSV0JNU")
 

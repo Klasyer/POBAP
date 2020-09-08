@@ -2,10 +2,11 @@ import requests
 import json 
 import time 
 import os 
-from PobapCode.Pricing.cache import PoeNinjaCache,PriceCache, CurrencyCache
+from PobapCode.Pricing.cache import PoeNinjaCache,PriceCache, CurrencyCache, ChaosCache, FromChaosCache
 from cachetools import cached
 from PobapCode.needed.neededLists import poeNinja_links, poeNinja_Currency
 import pickle 
+import re
 
 @cached(PoeNinjaCache)
 def Get_PoeNinja_Prices(): 
@@ -36,10 +37,12 @@ def Get_PoeNinja_Prices():
 @cached(PriceCache)
 def Get_PoeNinja_Item_Price(item2Price,links = 0): 
     price = 0
+    fnlPrice = 0 
     for item in Get_PoeNinja_Prices(): 
         if item['name'] == item2Price and item['links'] == links: 
             price = item['value']
-    rtn = {'name':item2Price, 'value':price, 'currency':'chaos'}
+    fnlPrice = max(fnlPrice,price)
+    rtn = {'name':item2Price, 'value':fnlPrice, 'currency':'chaos'}
     return rtn
 
 @cached(CurrencyCache)
@@ -68,8 +71,26 @@ def Get_PoeNinja_Currency():
             pickle.dump(PoeNinjaCurrency, fp)
     return PoeNinjaCurrency 
 
-'''
-for item in Get_PoeNinja_Currency():
-    #print(item)
-    return 1
-'''
+@cached(ChaosCache)
+def Get_Chaos(amount, currency): 
+    price = 0 
+    for item in Get_PoeNinja_Currency():
+        name = item['name'].upper()
+        name = re.sub(' ORB$','',name)
+        if currency.upper() == name:
+            price = amount * item['value']
+    if price == 0: 
+        price = amount
+    return price
+
+@cached(FromChaosCache)
+def Get_From_Chaos(chaosAmount, currency): 
+    price = 0 
+    for item in Get_PoeNinja_Currency():
+        name = item['name'].upper()
+        name = re.sub(' ORB$','',name)
+        if currency.upper() == name:
+            price = chaosAmount / item['value']
+    if price == 0: 
+        price = chaosAmount
+    return price

@@ -1,5 +1,17 @@
 setup.py
+PobapCode/__init__.py
 PobapCode.egg-info/PKG-INFO
 PobapCode.egg-info/SOURCES.txt
 PobapCode.egg-info/dependency_links.txt
 PobapCode.egg-info/top_level.txt
+PobapCode/Pricing/PoeNinja.py
+PobapCode/Pricing/PoePrices.py
+PobapCode/Pricing/Price.py
+PobapCode/Pricing/__init__.py
+PobapCode/Pricing/cache.py
+PobapCode/buildNitems/__init__.py
+PobapCode/buildNitems/fixedBuild.py
+PobapCode/buildNitems/fixedItem.py
+PobapCode/needed/__init__.py
+PobapCode/needed/helpFunctions.py
+PobapCode/needed/neededLists.py
