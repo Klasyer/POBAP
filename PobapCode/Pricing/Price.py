@@ -24,10 +24,10 @@ def Get_Build_Price(fixedBuild):
         pricedBuild.append(price)
     totPrice = round(totPrice,2)
     totExalted = round(Get_From_Chaos(totPrice,'exalted'),2)
-    total = {'Chaos Total Cost':totPrice,'Currency':'chaos','Exalted Total Cost':totExalted, 'Unique Items':uniqueCount} 
+    total = {'Chaos Total Cost':totPrice,'Exalted Total Cost':totExalted, 'Unique Items':uniqueCount} 
     finalPricing = {'Overview':total, 'Detialed':pricedBuild}
     return finalPricing 
-0
+
 '''
 b1 = fixedBuild("https://pastebin.com/UfSV0JNU")
 
