@@ -6,13 +6,13 @@ from PobapCode.Pricing.Price import Get_Build_Price
 
 application = app = Flask(__name__) 
 
-@app.route('/Unique/<itemSearch>',methods=['GET'])
+@application.route('/Unique/<itemSearch>',methods=['GET'])
 def UniuqePrice(itemSearch):
     text = Get_PoeNinja_Item_Price(itemSearch)
     text = json.loads(json.dumps(text))
     return text 
 
-@app.route('/pastebin.com/<build>',methods=['GET'])
+@application.route('/pastebin.com/<build>',methods=['GET'])
 def finalBuildPricing_Pastebin(build): 
     buildLink = 'https://pastebin.com/' + build
     myBuild = fixedBuild(buildLink) 
@@ -20,7 +20,7 @@ def finalBuildPricing_Pastebin(build):
     rtn = json.loads(json.dumps(Get_Build_Price(myBuild)))
     return rtn
 
-@app.route('/PriceXml',methods=['POST'])
+@application.route('/PriceXml',methods=['POST'])
 def finalBuildPricing_XML(): 
     buildLink = request.data
     myBuild = fixedBuild(buildLink) 
