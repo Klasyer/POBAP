@@ -7,7 +7,7 @@ from PobapCode.Pricing.Price import Get_Build_Price
 application = app = Flask(__name__) 
 
 @app.route('/Unique/<itemSearch>',methods=['GET'])
-def index(itemSearch):
+def UniuqePrice(itemSearch):
     text = Get_PoeNinja_Item_Price(itemSearch)
     text = json.loads(json.dumps(text))
     return text 
@@ -27,7 +27,6 @@ def finalBuildPricing_XML():
     myBuild.fix_items()
     rtn = json.loads(json.dumps(Get_Build_Price(myBuild)))
     return rtn
-
 
 if __name__ == "__main__": 
     app.run(debug=False)
