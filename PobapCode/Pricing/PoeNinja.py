@@ -8,6 +8,7 @@ from PobapCode.needed.neededLists import poeNinja_links, poeNinja_Currency
 import pickle 
 import re
 
+#we are updating once every 24 hours the list with the prices for all the items from poeNinja
 @cached(PoeNinjaCache)
 def Get_PoeNinja_Prices(): 
     toUpdate = False 
@@ -34,6 +35,7 @@ def Get_PoeNinja_Prices():
             pickle.dump(PoeNinjaPrice, fp)
     return PoeNinjaPrice 
 
+#For an item requested, we are returning the item, and its value (chaos value atm, other option soonTM to come) 
 @cached(PriceCache)
 def Get_PoeNinja_Item_Price(item2Price,links = 0): 
     price = 0
@@ -45,6 +47,7 @@ def Get_PoeNinja_Item_Price(item2Price,links = 0):
     rtn = {'name':item2Price, 'value':fnlPrice, 'currency':'chaos'}
     return rtn
 
+#simmilarly to before, here we get the full list once every 24 hours of all the currency values
 @cached(CurrencyCache)
 def Get_PoeNinja_Currency(): 
     toUpdate = False 
@@ -71,6 +74,7 @@ def Get_PoeNinja_Currency():
             pickle.dump(PoeNinjaCurrency, fp)
     return PoeNinjaCurrency 
 
+#gets the chaos value of a currency 
 @cached(ChaosCache)
 def Get_Chaos(amount, currency): 
     price = 0 
@@ -83,6 +87,7 @@ def Get_Chaos(amount, currency):
         price = amount
     return price
 
+#translates chaos value to a different currency
 @cached(FromChaosCache)
 def Get_From_Chaos(chaosAmount, currency): 
     price = 0 

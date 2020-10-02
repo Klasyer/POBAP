@@ -6,6 +6,9 @@ import pobapi
 from PobapCode.Pricing.cache import PoePriceCache
 from cachetools import cached
 
+#for league l, we are sending an item (after its fixed) to poePrices, jsoning the responce and getting out the maximum price of the item. 
+#because poeNinja and poePrices write ex in different ways we replace it
+#then we return the price back, with the item
 
 @cached(PoePriceCache)
 def Get_PoePrices_price(item2Price,itemName):
@@ -69,4 +72,4 @@ Crusader Item
 Hunter Item
 '''
 
-print(Get_PoePrices_price(item,'Oblivion Veil'))
+#print(Get_PoePrices_price(item,'Oblivion Veil'))

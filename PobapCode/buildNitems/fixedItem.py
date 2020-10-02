@@ -2,6 +2,9 @@ from PobapCode.needed.neededLists import special_seperator, seperetor_mods, mods
 from PobapCode.needed.helpFunctions import list_in_string, string_in_list, string_first_num, list_in_string_dict
 import pobapi
 
+#A class for items to fixed thier text, to be able to pull from POB and price it, since poeprices requiers the format of poe 
+#the overlays seem to get away with it by just copying the item from the game, but since it isnt an option, here i fix the items. 
+
 class fixedItem: 
     def __init__(self, item): 
         self.oItem = item
@@ -12,6 +15,8 @@ class fixedItem:
             raise TypeError('The item has to be a list') 
         super().__setattr__(name, value)
     
+#The sockets from pob come as a tuple, so text-wise it comes as (b,b),(g,g), this fixes it to be b-b g-g as in game
+
     def fix_sockets(self): 
         sockets_location = string_in_list('Sockets',self.newItem) 
         if sockets_location != -1: 
@@ -32,6 +37,9 @@ class fixedItem:
             self.newItem[sockets_location] = 'Sockets: ' + ''.join(socket_list)
             return self.newItem[sockets_location]
 
+#in Poe items, the items are seperated with dashes, between certain mod groups, come those seperators. 
+#By keeping a list with those locaiton, it adds them to the item - in case of implicits, it adds a few lines to seperate it rightfuly 
+
     def add_seperetors(self): 
         fix = [] 
         seperate = '--------'
@@ -50,8 +58,9 @@ class fixedItem:
         self.newItem = fix 
         return fix
     
-    def fix_mods(self): 
+#this fixes the mods in the items word wise, deletes uneeded things from the lines and changes the differences 
 
+    def fix_mods(self): 
         for i,mod in enumerate(self.newItem): 
             if list_in_string(mod, mods_to_del): 
                 self.newItem[i] = 'Delete' 
@@ -60,6 +69,8 @@ class fixedItem:
                 self.newItem[i] = self.newItem[i].replace(known_mods[index]['mod'],known_mods[index]['fix']).strip()
         self.newItem = list(filter(('Delete').__ne__,self.newItem))
         return True
+
+#a finalized function that calls all the other functions
 
     def fix_item(self): 
         fixedItem.fix_sockets(self)

@@ -5,6 +5,9 @@ from PobapCode.Pricing.PoeNinja import Get_PoeNinja_Item_Price, Get_Chaos, Get_F
 from PobapCode.Pricing.cache import BuildCache
 from cachetools import cached
 
+#here we get the build, and for each item in the build, the uniques get checked through poeNinja, the rares get checked through poePrices 
+#finally we return a list which contains all the items prices, and total price, for both exalts and chaos
+
 @cached(BuildCache)
 def Get_Build_Price(fixedBuild): 
     pricedBuild = []

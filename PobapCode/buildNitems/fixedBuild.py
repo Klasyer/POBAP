@@ -1,6 +1,7 @@
 import pobapi 
 from PobapCode.buildNitems.fixedItem import fixedItem
 
+#a funcation that takes the build from pob, and created a list from it, along side saving the format from pob 
 class fixedBuild: 
     def __init__(self, build): 
         if 'pastebin.com' in str(build): 
@@ -14,6 +15,8 @@ class fixedBuild:
         self.buildItems = []
         for item in item_list: 
             self.buildItems.append(item.splitlines())
+
+#For each item in the build, in the new list it fixes the item - see fixedItem
 
     def fix_items(self):
         for i,item in enumerate(self.buildItems):

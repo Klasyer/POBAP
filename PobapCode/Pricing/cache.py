@@ -1,5 +1,7 @@
 from cachetools import cached,TTLCache 
 
+#just a bunch of cache to save some load times from things that might get repeated
+
 PoeNinjaCache = TTLCache(maxsize=4, ttl=43200)
 
 PriceCache = TTLCache(maxsize=250, ttl=43200)

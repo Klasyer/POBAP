@@ -1,5 +1,7 @@
 import re
 
+#just lists of funcatins to help aroundm mostly checking elements in lists and vise versa 
+
 def string_in_list(strng, lst): 
     rtn = -1
     for i,element in enumerate(lst): 
