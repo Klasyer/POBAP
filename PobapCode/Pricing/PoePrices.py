@@ -6,10 +6,11 @@ import pobapi
 from PobapCode.Pricing.cache import PoePriceCache
 from cachetools import cached
 
+
 @cached(PoePriceCache)
 def Get_PoePrices_price(item2Price,itemName):
     item = {"i":base64.b64encode(item2Price.encode('ascii')) 
-    ,"l":"Harvest"
+    ,"l":"Heist"
     ,"s":"POBAP"
     }
     poePriceResponse = json.loads((requests.post("https://www.poeprices.info/api?",params=item)).text)
@@ -20,6 +21,7 @@ def Get_PoePrices_price(item2Price,itemName):
         max_price = 0 
         currency = 'chaos'
     return {'name':itemName,'value':max_price, 'currency':currency}
+
 
 '''
 url = "https://pastebin.com/UfSV0JNU" 
@@ -48,6 +50,7 @@ Int: 155
 --------
 Sockets: G-B-W-G-B-G 
 --------
+
 Item Level: 86
 --------
 Quality does not increase Defences (enchant)
@@ -64,6 +67,6 @@ Spells have +1.48% to Critical Strike Chance
 --------
 Crusader Item
 Hunter Item
+'''
 
 print(Get_PoePrices_price(item,'Oblivion Veil'))
-'''

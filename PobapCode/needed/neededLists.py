@@ -21,14 +21,14 @@ special_seperator = [
 ]
 
 poeNinja_links = [
-    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=SkillGem&language=en',
-    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueJewel&language=en',
-    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueFlask&language=en',
-    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueWeapon&language=en',
-    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueArmour&language=en',
-    'https://poe.ninja/api/data/itemoverview?league=Harvest&type=UniqueAccessory&language=en'
+    'https://poe.ninja/api/data/itemoverview?league=Heist&type=SkillGem&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Heist&type=UniqueJewel&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Heist&type=UniqueFlask&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Heist&type=UniqueWeapon&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Heist&type=UniqueArmour&language=en',
+    'https://poe.ninja/api/data/itemoverview?league=Heist&type=UniqueAccessory&language=en'
 ]
 
 poeNinja_Currency = [
-    'https://poe.ninja/api/data/currencyoverview?league=Harvest&type=Currency&language=en'
+    'https://poe.ninja/api/data/currencyoverview?league=Heist&type=Currency&language=en'
 ]

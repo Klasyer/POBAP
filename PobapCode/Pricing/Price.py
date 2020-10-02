@@ -29,7 +29,7 @@ def Get_Build_Price(fixedBuild):
     return finalPricing 
 
 '''
-b1 = fixedBuild("https://pastebin.com/UfSV0JNU")
+b1 = fixedBuild("https://pastebin.com/FYwpvtc3")
 
 b1.fix_items()
 
